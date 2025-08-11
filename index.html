@@ -1,269 +1,65 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VCS Capital Properties</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-```
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VCSLand</title>
+  <style>
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background-color: #4f46e5;
-        background-image: 
-            radial-gradient(at 40% 20%, #8b5cf6 0px, transparent 50%),
-            radial-gradient(at 80% 0%, #06b6d4 0px, transparent 50%),
-            radial-gradient(at 0% 50%, #ec4899 0px, transparent 50%),
-            radial-gradient(at 80% 50%, #10b981 0px, transparent 50%),
-            radial-gradient(at 0% 100%, #f59e0b 0px, transparent 50%),
-            radial-gradient(at 80% 100%, #ef4444 0px, transparent 50%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow-x: hidden;
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
     }
-
     .container {
-        text-align: center;
-        max-width: 800px;
-        padding: 2rem;
-        position: relative;
-        z-index: 2;
+      max-width: 600px;
+      padding: 20px;
     }
-
-    .logo {
-        font-size: 4rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #ffffff, #f0f0f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 1rem;
-        animation: fadeInUp 1s ease-out;
-        letter-spacing: -2px;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
     }
-
-    .tagline {
-        font-size: 1.5rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 3rem;
-        animation: fadeInUp 1s ease-out 0.2s both;
-        font-weight: 300;
-        line-height: 1.6;
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-
-    .buttons-container {
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        animation: fadeInUp 1s ease-out 0.4s both;
+    a {
+      text-decoration: none;
+      background: #22d3ee;
+      color: #0f2027;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .app-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.2rem 2.5rem;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 16px;
-        color: white;
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        min-width: 200px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(34, 211, 238, 0.4);
     }
-
-    .app-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.5s;
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
     }
-
-    .app-button:hover::before {
-        left: 100%;
-    }
-
-    .app-button:hover {
-        transform: translateY(-4px);
-        background-color: rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-    }
-
-    .app-button:active {
-        transform: translateY(-2px);
-    }
-
-    .app-icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 12px;
-        opacity: 0.9;
-    }
-
-    .floating-elements {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .floating-circle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .floating-circle:nth-child(1) {
-        width: 120px;
-        height: 120px;
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-    }
-
-    .floating-circle:nth-child(2) {
-        width: 80px;
-        height: 80px;
-        top: 70%;
-        right: 15%;
-        animation-delay: 2s;
-    }
-
-    .floating-circle:nth-child(3) {
-        width: 60px;
-        height: 60px;
-        top: 30%;
-        right: 20%;
-        animation-delay: 4s;
-    }
-
-    .floating-circle:nth-child(4) {
-        width: 100px;
-        height: 100px;
-        bottom: 20%;
-        left: 20%;
-        animation-delay: 1s;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .logo {
-            font-size: 3rem;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .buttons-container {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .app-button {
-            min-width: 250px;
-        }
-
-        .container {
-            padding: 1rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .logo {
-            font-size: 2.5rem;
-        }
-
-        .tagline {
-            font-size: 1rem;
-        }
-
-        .app-button {
-            min-width: 200px;
-            padding: 1rem 2rem;
-        }
-    }
-</style>
-```
-
+  </style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
+  <div class="container">
+    <h1>Welcome to VCSLand</h1>
+    <div class="buttons">
+      <a href="https://calculator.vcsland.com">Calculator</a>
+      <a href="https://moji.vcsland.com">Moji Blaster</a>
     </div>
-
-```
-<div class="container">
-    <h1 class="logo">VCSLand</h1>
-    <p class="tagline">VCS Capital Properties</p>
-    
-    <div class="buttons-container">
-        <a href="https://calculator.vcsland.com" class="app-button">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="4" y="2" width="16" height="20" rx="2"/>
-                <line x1="8" y1="6" x2="16" y2="6"/>
-                <line x1="8" y1="10" x2="16" y2="10"/>
-                <line x1="8" y1="14" x2="16" y2="14"/>
-                <line x1="8" y1="18" x2="12" y2="18"/>
-            </svg>
-            Calculator
-        </a>
-        
-        <a href="https://moji.vcsland.com" class="app-button">
-            <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                <line x1="9" y1="9" x2="9.01" y2="9"/>
-                <line x1="15" y1="9" x2="15.01" y2="9"/>
-            </svg>
-            Moji
-        </a>
-    </div>
-</div>
-
+    <footer>© 2025 VCS Capital Properties. All rights reserved.</footer>
+  </div>
+</body>
+</html>
